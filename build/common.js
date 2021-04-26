@@ -32,8 +32,24 @@ module.exports = {
         test: /\.(styl|css)$/,
         exclude: /node_modules/,
         use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: true,
+              modules: {
+                namedExport: true,
+              },
+            },
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: true,
+              modules: {
+                namedExport: true,
+              },
+            },
+          },
           'postcss-loader',
           'stylus-loader',
         ],
